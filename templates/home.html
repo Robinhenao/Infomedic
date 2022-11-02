@@ -1,0 +1,16 @@
+{% extends 'core.html' %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+    <div class="jumbotron container-fluid text-white grey p-5" style="background-image: url(https://img.freepik.com/free-vector/3d-paper-style-curvy-design-layers_52683-34624.jpg?w=1380&t=st=1667084806~exp=1667085406~hmac=d358c99210d2fbaaa5a576365f625e90af02e9bbc1119e7b7a6e1a683fd32c0c);">
+        <div class="row">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h1 class="font-weight-bold text-white">WELCOME TO INFOMEDIC!!</h1>
+                <p>This is a system developed for the management of medical appointments for independent or nomadic doctors.
+                With Infomedic you can keep track of your appointments, the patients and their companions...</p>
+                <a class="btn btn-primary btn-md ml-0" href="{% url 'agenda' %}">Start now</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'core.html' %}
+
+{% block title %}Agenda{% endblock %}
+
+{% block content %}
+    <div class="container px-4 px-md-3 ">
+             <a href="{% url 'make_paciente' %}" class="btn btn-success"><i class="fa-solid fa-gear "></i> Agregar Cita</a>
+    </div>
+    <div class="bd-masthead mb-3" id="content">
+        <div class="container px-4 px-md-3">
+            {% if projects %}
+                {% for project in projects %}
+                    {% if user == project.author%}
+                        {% if forloop.first %}
+                            <div class="row">
+                        {% endif %}
+                        <div class="col-4 mt-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ project.paciente }}</h5>
+                                    <hr/>
+                                    <p class="card-text">Lugar:{{ project.lugar }}</p>
+                                    <p class="card-text">Fecha: {{ project.fecha }}</p>
+                                    <p class="card-text">Costo: {{ project.costo }}</p>
+                                    <p class="card-text">Acompa;ante: {{ project.acompanante }}</p>
+                                    <p class="card-text">estado: {{ project.estado }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{%url 'update_cita' project.id%}" class="btn btn-primary"><i class="fa-solid fa-gear"></i> Modificar</a>
+                                    <a href="{%url 'delete_cita' project.id%}" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i> Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
+                        {% if forloop.last %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% include "paginat.html" %}
+            {% else %}
+                <div class="alert alert-danger">no hay nada aqui</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
